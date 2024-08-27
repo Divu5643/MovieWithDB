@@ -1,0 +1,68 @@
+﻿@model movieApplicationWithDB.Models.Booking
+
+@{
+    ViewBag.Title = "Book";
+}
+
+@{
+    movieApplicationWithDB.Models.Movie showMovie = (movieApplicationWithDB.Models.Movie)ViewData["movieDetails"];
+    movieApplicationWithDB.Models.ShowTime movieTime = (movieApplicationWithDB.Models.ShowTime)ViewData["showTime"];
+    @*@ViewData["showid"]  =  movieTime.Id;*@
+    @*@ViewBag.showid  = movieTime.Id;*@
+
+    Session["showId"] = movieTime.Id;
+    Session["movieId"] = movieTime.MovieID;
+    @*@ViewData["movieId"] = movieTime.MovieID;*@
+    <div class="container my-5">
+        <div class="p-5  bg-body-tertiary rounded-3">
+            <h1 class="text-body-emphasis">@showMovie.Title</h1>
+            <p>Genre: @showMovie.Genre</p>
+            <p class="col-lg-8 fs-5 text-muted"> @showMovie.Description</p>
+            <p>Showtime: @movieTime.Showtime.ToShortTimeString()</p>
+            <p>Available Seats: @movieTime.AvailableSeats</p>
+
+            @using (Html.BeginForm("book", "Booking", FormMethod.Post))
+            {
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            @Html.Label("Seats")
+                            @Html.TextBoxFor(model => model.NumberOfSeats, new { @type = "number", @min = "1", max = movieTime.AvailableSeats })
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            @Html.Label("User name")
+                            @Html.TextBoxFor(model => model.UserName, new { @type = "text" })
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            @Html.Label("Email")
+                            @Html.TextBoxFor(model => model.UserEmail)
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit"> Submit </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            }
+
+
+
+
+        </div>
+    </div>
+
+}
+
+
+

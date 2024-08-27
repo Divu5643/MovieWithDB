@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+@{
+    movieApplicationWithDB.Models.Movie showMovie = (movieApplicationWithDB.Models.Movie)ViewData["movieDetails"];
+    movieApplicationWithDB.Models.ShowTime movieTime = (movieApplicationWithDB.Models.ShowTime)ViewData["showTime"];
+    string showingTime = movieTime.Showtime.ToLongTimeString();
+    string showReleaseDate = showMovie.ReleaseDate.ToLongDateString();
+    <div class="container-fluid py-5">
+        <div class="d-flex gap-5 align-items-center">
+            <h1 class="display-5 fs-1 fw-bold">@showMovie.Title</h1>
+            <div class="time-container" style="margin-left: 20rem">
+                <h5>ShowTime </h5>
+
+                <h4>@showingTime </h4>
+
+            </div>
+        </div>
+        <p> Genre: @showMovie.Genre</p>
+        <p class="col-md-8 fs-4">@showMovie.Description</p>
+        <p>Duration : @showMovie.Duration mins</p>
+        <p>Release Date: @showReleaseDate </p>
+        <button class="btn btn-primary btn-lg" type="button" onclick="window.location.href = `/Booking/Book/@showMovie.MovieID` ">Book Now</button>
+    </div>
+
+
+}
+

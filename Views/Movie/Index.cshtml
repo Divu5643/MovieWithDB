@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Movies";
+}
+
+<div class="container" style="margin:auto;">
+    @{
+        List<movieApplicationWithDB.Models.Movie> movieList = (List<movieApplicationWithDB.Models.Movie>)Session["movieList"];
+
+    }
+    <div class="d-flex justify-content-center" style="flex-wrap:wrap;gap:25px">
+        @foreach (var movie in movieList)
+        {
+            string temp = movie.ReleaseDate.ToString("dd-MM-yyyy");
+            <div class="card custom-card" style="">
+                <div class="card-body">
+                    <h5 class="card-title">@movie.Title</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">@movie.Genre</h6>
+                    <p class="card-text" style=" overflow: hidden; height: 30%">@movie.Description</p>
+                    <p class="card-text">@movie.Duration mins</p>
+                    <p class="card-link">Release Date: @temp</p>
+                    <a class="btn btn-primary" href="/Movie/Details/@movie.MovieID">Book Movie</a>
+                </div>
+            </div>
+        }
+    </div>

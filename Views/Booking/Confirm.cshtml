@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Confirm";
+}
+
+
+<div class="container my-5">
+    <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
+
+        <h1 class="text-body-emphasis">Tickets Booked</h1>
+
+        <h2> @ViewBag.movieTitle</h2>
+        <p>Seats @ViewBag.seats</p>
+        <p class="col-lg-6 mx-auto mb-4">  Name : @ViewBag.username</p>
+        <p>Email : @ViewBag.email</p>
+        <button class="btn btn-primary px-5 mb-5">
+            @{
+                DateTime temp = ViewBag.showTime;
+
+            }
+            Time: @temp.ToShortTimeString()
+        </button>
+    </div>
+</div>
+
+
+
+
+
+

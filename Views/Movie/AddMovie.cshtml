@@ -1,0 +1,56 @@
+﻿@model movieApplicationWithDB.Models.Movie
+
+@{
+    ViewBag.Title = "AddMovie";
+}
+
+<div class="custom-background-container" style="margin:auto; width:60%">
+    <h3 class="text-center"> Add Movie</h3>
+
+    <div class="container-fluid">
+        @using (Html.BeginForm("createMovie", "Movie", FormMethod.Post, new { @class = "p-3" }))
+        {
+            <div class="row my-2">
+                <div class="col ">
+                    @Html.Label("Title", new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                </div>
+                <div class="col">
+                    @Html.Label("Genre", new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.Genre, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col">
+                    @Html.Label("Duration", new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.Duration, new { @class = "form-control", @type = "number" })
+                </div>
+                <div class="col">
+                    @Html.Label("DateTime", new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.ReleaseDate, new { @class = "form-control", @type = "date" })
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col">
+                    @Html.Label("Description", new { @class = "form-label" })
+                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @placeholder = "Enter Description" })
+                </div>
+                <div class="col">
+                    @Html.Label("ShowTime", new { @class = "form-lable" })
+                    @Html.TextBoxFor(model => model.time, new { @class = "form-control", @type = "time" })
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col-12">
+                    <input type="submit" class="btn btn-primary" />
+                </div>
+                <div></div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
